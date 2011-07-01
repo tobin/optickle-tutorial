@@ -16,6 +16,9 @@ fprintf('\n%s\n', [ repmat('-', 1, 31) '+' repmat('-', 1, 10*length(vFrf))]);
 for ii=1:opt.Nlink,
     label = sprintf('%s --> %s', ...
         getSourceName(opt, ii), getSinkName(opt, ii));
+    if length(label) > 29
+        label = label((end-29):end);
+    end
     fprintf('% 30s | ', label);
     for jj=1:length(vFrf),
         amp = abs(fDC(ii,jj))^2;
