@@ -1,4 +1,29 @@
 function showfDC(opt, fDC)
+% SHOWFDC  Pretty-print the fDC matrix returned by Optickle
+%
+% Example:
+%
+% >> opt = optFP;
+% >> [fDC, sigDC, sigAC, mMech, noiseAC, noiseMech] = tickle(opt, [], f);
+% >> showfDC(opt, fDC)
+%                                    | -20 MHz    DC     +20 MHz  
+% -----------------------------------+------------------------------
+%              Laser->out --> AM<-in |   0  W   100  W     0  W   
+%                 AM->out --> PM<-in |   0  W   100  W     0 pW   
+%               PM->out --> Mod1<-in |   0  W   100  W     0 pW   
+%               Mod1->out --> IX<-bk | 990 mW    98  W   990 mW   
+%                  IX->fr --> EX<-fr |  12 mW    12 kW    12 mW   
+%                  EX->fr --> IX<-fr |  12 mW    12 kW    12 mW   
+%                IX->bk --> REFL<-in | 990 mW    86  W   990 mW   
+% TRANS_TELE->out --> TRANS_SMIR<-fr |  12 μW    12  W    12 μW   
+%      TRANS_SMIR->fr --> TRANSa<-in |   6 μW     6  W     6 μW   
+%      TRANS_SMIR->bk --> TRANSb<-in |   6 μW     6  W     6 μW   
+%          EX->bk --> TRANS_TELE<-in |  12 μW    12  W    12 μW   
+%   FlashLight->out --> FakeTele<-in |   0  W     0  W     1 pW   
+%           FakeTele->out --> EX<-bk |   0  W     0  W     1 pW  
+%
+% Note that the field amplitudes are ignored; the values shown are the
+% modulus squared of the field amplitudes.
 
 vFrf = get(opt, 'vFrf');
 
