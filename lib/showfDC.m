@@ -22,9 +22,9 @@ function showfDC(opt, fDC)
 %   FlashLight->out --> FakeTele<-in |   0  W     0  W     1 pW   
 %           FakeTele->out --> EX<-bk |   0  W     0  W     1 pW  
 %
-% Note that the field amplitudes are ignored; the values shown are the
+% Note that the field phases are ignored; the values shown are the
 % modulus squared of the field amplitudes.
-
+    
 vFrf = get(opt, 'vFrf');
 
 % format the link labels
