@@ -25,6 +25,8 @@ function showfDC(opt, fDC)
 %
 % Note that the field phases are ignored; the values shown are the
 % modulus squared of the field amplitudes.
+%
+% See also SHOWSIGDC
 
 % Tobin Fricke <tobin.fricke@ligo.org> July 2011
     

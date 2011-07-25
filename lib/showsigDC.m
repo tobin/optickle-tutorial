@@ -1,5 +1,5 @@
 function showsigDC(opt, sigDC)
-% SHOWFDC  Pretty-print the sigDC matrix returned by Optickle
+% SHOWSIGDC  Pretty-print the sigDC matrix returned by Optickle
 %
 % Example:
 %
@@ -7,6 +7,18 @@ function showsigDC(opt, sigDC)
 % >> f = logspace(log10(0.1), log10(7000), 101);
 % >> [fDC, sigDC, sigAC] = tickle(opt, [], f);
 % >> showsigDC(opt, sigDC)
+% 
+%     probe | power
+% ----------+---------
+%   REFL_DC |   88  W
+%    REFL_I |   22 nW
+%    REFL_Q |   23 nW
+% TRANSa_DC |    6  W
+% TRANSb_DC |    6  W
+%     IX_DC |   12 kW
+%     EX_DC |   12 kW
+%
+% See also SHOWFDC
 
 % Tobin Fricke <tobin.fricke@ligo.org> July 2011
 
