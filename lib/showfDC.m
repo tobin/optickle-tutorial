@@ -4,7 +4,8 @@ function showfDC(opt, fDC)
 % Example:
 %
 % >> opt = optFP;
-% >> [fDC, sigDC, sigAC, mMech, noiseAC, noiseMech] = tickle(opt, [], f);
+% >> f = logspace(log10(0.1), log10(7000), 101);
+% >> [fDC, sigDC, sigAC] = tickle(opt, [], f);
 % >> showfDC(opt, fDC)
 %                                    | -20 MHz    DC     +20 MHz  
 % -----------------------------------+------------------------------
@@ -24,6 +25,8 @@ function showfDC(opt, fDC)
 %
 % Note that the field phases are ignored; the values shown are the
 % modulus squared of the field amplitudes.
+
+% Tobin Fricke <tobin.fricke@ligo.org> July 2011
     
 vFrf = get(opt, 'vFrf');
 
@@ -99,7 +102,7 @@ elseif lf > -3
     prefix = 'm';
     val = val * 1000;
 elseif lf > -6
-    prefix = 'μ';
+    prefix = 'u';    % 'μ' works on linux 
     val = val * 1e6;
 elseif lf > -9
     prefix = 'n';
