@@ -16,10 +16,10 @@ function showfDC(opt, fDC)
 %                  IX->fr --> EX<-fr |  12 mW    12 kW    12 mW   
 %                  EX->fr --> IX<-fr |  12 mW    12 kW    12 mW   
 %                IX->bk --> REFL<-in | 990 mW    86  W   990 mW   
-% TRANS_TELE->out --> TRANS_SMIR<-fr |  12 μW    12  W    12 μW   
-%      TRANS_SMIR->fr --> TRANSa<-in |   6 μW     6  W     6 μW   
-%      TRANS_SMIR->bk --> TRANSb<-in |   6 μW     6  W     6 μW   
-%          EX->bk --> TRANS_TELE<-in |  12 μW    12  W    12 μW   
+% TRANS_TELE->out --> TRANS_SMIR<-fr |  12 uW    12  W    12 uW   
+%      TRANS_SMIR->fr --> TRANSa<-in |   6 uW     6  W     6 uW   
+%      TRANS_SMIR->bk --> TRANSb<-in |   6 uW     6  W     6 uW   
+%          EX->bk --> TRANS_TELE<-in |  12 uW    12  W    12 uW   
 %   FlashLight->out --> FakeTele<-in |   0  W     0  W     1 pW   
 %           FakeTele->out --> EX<-bk |   0  W     0  W     1 pW  
 %
@@ -32,10 +32,15 @@ function showfDC(opt, fDC)
     
 vFrf = get(opt, 'vFrf');
 
+% minimal sanity check
+if ~isequal(size(fDC), [opt.Nlink length(vFrf)])
+    error('This opt and sigDC don''t seem to go together');
+end
+
 % format the link labels
 labels = cellfun(...
     @(link) sprintf('%s --> %s', ...
-    getSourceName(opt, link), getSinkName(opt, link)), ...
+                    getSourceName(opt, link), getSinkName(opt, link)), ...
     num2cell(1:opt.Nlink), 'UniformOutput', 0);
 
 % how long is the longest label?

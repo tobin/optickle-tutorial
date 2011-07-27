@@ -23,7 +23,7 @@ function showsigDC(opt, sigDC)
 % Tobin Fricke <tobin.fricke@ligo.org> July 2011
 
 % minimal sanity check
-if length(sigDC) ~= opt.Nprobe,
+if ~isequal(size(sigDC),[opt.Nprobe 1])
     error('This opt and sigDC don''t seem to go together');
 end
 
@@ -35,7 +35,7 @@ labels = cellfun(@(sn) getProbeName(opt, sn), num2cell(1:opt.Nprobe), ...
 max_label_len = max(cellfun(@length, labels));
 
 % how long do we want them to be?
-label_len = max_label_len;
+label_len = max(max_label_len, length('probe'));
 
 % use sprintf to right-justify the row label
 label_fmtstr = sprintf('%% %ds | ', label_len);
