@@ -9,7 +9,4 @@ opt = probesEligo_00(opt, par);
 opt2dot(opt, 'demo.dot');
 
 % Run GraphViz on the file we made
-system('dot -Tps demo.dot > demo.dot.ps');
-
-% Convert to PDF
-system('ps2pdf demo.dot.ps');
+system('dot -Tpdf demo.dot > demo.dot.pdf');
