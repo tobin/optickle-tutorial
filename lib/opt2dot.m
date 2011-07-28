@@ -25,11 +25,12 @@ end
 for snLink=1:opt.Nlink,
     [src_name, src_sn, src_port] = getSourceName(opt, snLink);
     [snk_name, snk_sn, snk_port] = getSinkName(opt, snLink);
-    fprintf(fid, '     %s -> %s [label="%s>%s"];\n', ...
+    fprintf(fid, '     %s -> %s [label="%s&rarr;%s"];\n', ...
         getOpticName(opt, src_sn), getOpticName(opt, snk_sn), ...
         opt.optic{src_sn}.outNames{src_port}{1}, ...
         opt.optic{snk_sn}.inNames{snk_port}{1});
 end
+% To-do: Draw the probes
 fprintf(fid, '}\n');
 
 if fid ~= 1
