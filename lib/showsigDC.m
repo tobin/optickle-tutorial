@@ -49,9 +49,14 @@ fprintf('%s\n', [ repmat('-', 1, label_len + 1) '+' ...
 
 % print out the power at each probe:
 for sn=1:opt.Nprobe,
-    [prefix, val] = metricize(sigDC(sn));
+    [prefix, value] = metricize(sigDC(sn));
     fprintf(label_fmtstr, labels{sn});
-    fprintf(' %3.0f %sW\n', val, prefix);    
+    if value < 10
+        precision = 1;  % 3.1  (one decimal)
+    else
+        precision = 0;  % 137  (no decimals)
+    end
+    fprintf(' %3.*f %sW\n', precision, value, prefix);
 end
 fprintf('\n');
 end

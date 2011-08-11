@@ -57,8 +57,13 @@ for jj=1:length(vFrf)
     if vFrf(jj)==0
         fprintf('  DC     ');
     else
-        [prefix, val] = metricize(vFrf(jj));
-        fprintf('%+3.0f %sHz  ',val, prefix);
+        [prefix, value] = metricize(vFrf(jj));
+        if value < 10
+            precision = 1;
+        else
+            precision = 0;
+        end
+        fprintf('%+3.*f %sHz  ',precision, value, prefix);
     end
 end
 
@@ -78,8 +83,13 @@ for ii=1:opt.Nlink,
     % print out the field amplitudes
     for jj=1:length(vFrf),
         amp = abs(fDC(ii,jj))^2;
-        [prefix, val] = metricize(amp);
-        fprintf('%3.0f %sW   ', val, prefix);
+        [prefix, value] = metricize(amp);
+        if value < 10
+            precision = 1;  % 3.1  (one decimal)
+        else
+            precision = 0;  % 137  (no decimals)
+        end
+        fprintf('%3.*f %sW   ', precision, value, prefix);
     end
     fprintf('\n');
 end
