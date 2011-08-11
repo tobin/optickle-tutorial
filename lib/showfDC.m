@@ -89,7 +89,11 @@ for ii=1:opt.Nlink,
         else
             precision = 0;  % 137  (no decimals)
         end
-        fprintf('%3.*f %sW   ', precision, value, prefix);
+        if value == 0
+           fprintf('---  W   ');
+        else
+           fprintf('%3.*f %sW   ', precision, value, prefix);
+        end
     end
     fprintf('\n');
 end

@@ -56,7 +56,11 @@ for sn=1:opt.Nprobe,
     else
         precision = 0;  % 137  (no decimals)
     end
-    fprintf(' %3.*f %sW\n', precision, value, prefix);
+    if value == 0
+        fprintf(' ---  W\n');
+    else
+        fprintf(' %3.*f %sW\n', precision, value, prefix);
+    end
 end
 fprintf('\n');
 end
