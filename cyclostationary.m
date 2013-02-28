@@ -6,8 +6,7 @@
 % fmod, we find that the I quadrature is noisier than the Q quadrature.
 %
 % Reference: Niebauer, http://link.aps.org/doi/10.1103/PhysRevA.43.5022
-
-page 5022
+% page 5022
 %
 % Tobin Fricke 2011-08-23
 
