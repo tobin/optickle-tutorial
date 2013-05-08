@@ -10,6 +10,10 @@ else
     fid = fopen(filename, 'w');
 end
 
+% suppress optickle's warnings, if optickle set a warning id, 
+% we wouldn't need to set all off
+warning('off','all');
+
 fprintf(fid, 'digraph G {\n');
 % output the optics (graph nodes)
 for snOptic=1:opt.Noptic,
@@ -32,6 +36,9 @@ for snLink=1:opt.Nlink,
 end
 % To-do: Draw the probes
 fprintf(fid, '}\n');
+
+% now turn warnings back on
+warning('on','all');
 
 if fid ~= 1
     fclose(fid);
