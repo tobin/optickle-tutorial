@@ -4,9 +4,16 @@ function opt2dot(opt, filename)
 % The .dot format is documented here:
 % http://www.graphviz.org/Documentation/dotguide.pdf
 
+isPDF = 0;
+
 if nargin < 2
     fid = 1;
 else
+    if strcmpi(filename(end-3:end),'.pdf')
+        isPDF = 1;
+        pdffilename = filename;
+        filename = [filename(1:end-4),'.dot'];
+    end
     fid = fopen(filename, 'w');
 end
 
@@ -43,4 +50,9 @@ warning('on','all');
 if fid ~= 1
     fclose(fid);
 end
+
+if isPDF
+    system(['dot -Tpdf ',filename,' > ',pdffilename]);
+end
+
 end
