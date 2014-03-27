@@ -25,7 +25,7 @@ fprintf(fid, 'digraph G {\n');
 % output the optics (graph nodes)
 for snOptic=1:opt.Noptic,
     optic = opt.optic{snOptic};
-    fprintf(fid, '    %s', optic.name);
+    fprintf(fid, '    "%s"', optic.name);
     switch class(optic)
         case 'Sink',
             fprintf(fid, ' [shape=box]');
@@ -36,7 +36,7 @@ end
 for snLink=1:opt.Nlink,
     [src_name, src_sn, src_port] = getSourceName(opt, snLink);
     [snk_name, snk_sn, snk_port] = getSinkName(opt, snLink);
-    fprintf(fid, '     %s -> %s [label="%s&rarr;%s"];\n', ...
+    fprintf(fid, '     "%s" -> "%s" [label="%s&rarr;%s"];\n', ...
         getOpticName(opt, src_sn), getOpticName(opt, snk_sn), ...
         opt.optic{src_sn}.outNames{src_port}{1}, ...
         opt.optic{snk_sn}.inNames{snk_port}{1});
